@@ -1,0 +1,6 @@
+D:\.Net_Code\ProjectManagement\BusEL\bin\Debug\BusEL.dll
+D:\.Net_Code\ProjectManagement\BusEL\bin\Debug\BusEL.pdb
+D:\.Net_Code\ProjectManagement\BusEL\obj\Debug\BusEL.csproj.AssemblyReference.cache
+D:\.Net_Code\ProjectManagement\BusEL\obj\Debug\BusEL.csproj.CoreCompileInputs.cache
+D:\.Net_Code\ProjectManagement\BusEL\obj\Debug\BusEL.dll
+D:\.Net_Code\ProjectManagement\BusEL\obj\Debug\BusEL.pdb

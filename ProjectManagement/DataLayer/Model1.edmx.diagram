@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6462505fd9542aaaf77fc99588635c1" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectManagementModel.C_Project" Width="1.5" PointX="0.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagementModel.Cmplt_pro" Width="1.5" PointX="5.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagementModel.Cnfrm_pro" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagementModel.MemLogin" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagementModel.SupLogin" Width="1.5" PointX="9.125" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Cnfrm_pro_C_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Cmplt_pro_Cnfrm_pro" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Cnfrm_pro_MemLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Cnfrm_pro_SupLogin" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjectManagementModel.Apply_pro" Width="1.5" PointX="5.125" PointY="3" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Apply_pro_C_Project" />
+        <AssociationConnector Association="ProjectManagementModel.FK_Apply_pro_MemLogin" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

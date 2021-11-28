@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apply_pro">
+          <Key>
+            <PropertyRef Name="MemId" />
+          </Key>
+          <Property Name="App_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Proj_Id" Type="int" Nullable="false" />
+          <Property Name="MemId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Project">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duaration" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cmplt_pro">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cnfrm_pro">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SupId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemLogin">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupLogin">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Work_domain" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Apply_pro_C_Project">
+          <End Role="C_Project" Type="Self.C_Project" Multiplicity="1" />
+          <End Role="Apply_pro" Type="Self.Apply_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Project">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Apply_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apply_pro_MemLogin">
+          <End Role="MemLogin" Type="Self.MemLogin" Multiplicity="1" />
+          <End Role="Apply_pro" Type="Self.Apply_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MemLogin">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Apply_pro">
+              <PropertyRef Name="MemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cmplt_pro_Cnfrm_pro">
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="1" />
+          <End Role="Cmplt_pro" Type="Self.Cmplt_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cnfrm_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Cmplt_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cnfrm_pro_C_Project">
+          <End Role="C_Project" Type="Self.C_Project" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="C_Project">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cnfrm_pro_MemLogin">
+          <End Role="MemLogin" Type="Self.MemLogin" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemLogin">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="MemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cnfrm_pro_SupLogin">
+          <End Role="SupLogin" Type="Self.SupLogin" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupLogin">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="SupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectManagementModelStoreContainer">
+          <EntitySet Name="Apply_pro" EntityType="Self.Apply_pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Project" EntityType="Self.C_Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cmplt_pro" EntityType="Self.Cmplt_pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cnfrm_pro" EntityType="Self.Cnfrm_pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemLogin" EntityType="Self.MemLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupLogin" EntityType="Self.SupLogin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Apply_pro_C_Project" Association="Self.FK_Apply_pro_C_Project">
+            <End Role="C_Project" EntitySet="C_Project" />
+            <End Role="Apply_pro" EntitySet="Apply_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apply_pro_MemLogin" Association="Self.FK_Apply_pro_MemLogin">
+            <End Role="MemLogin" EntitySet="MemLogin" />
+            <End Role="Apply_pro" EntitySet="Apply_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cmplt_pro_Cnfrm_pro" Association="Self.FK_Cmplt_pro_Cnfrm_pro">
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+            <End Role="Cmplt_pro" EntitySet="Cmplt_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cnfrm_pro_C_Project" Association="Self.FK_Cnfrm_pro_C_Project">
+            <End Role="C_Project" EntitySet="C_Project" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cnfrm_pro_MemLogin" Association="Self.FK_Cnfrm_pro_MemLogin">
+            <End Role="MemLogin" EntitySet="MemLogin" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cnfrm_pro_SupLogin" Association="Self.FK_Cnfrm_pro_SupLogin">
+            <End Role="SupLogin" EntitySet="SupLogin" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_Project">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duaration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cnfrm_pro" Relationship="Self.FK_Cnfrm_pro_C_Project" FromRole="C_Project" ToRole="Cnfrm_pro" />
+          <NavigationProperty Name="Apply_pro" Relationship="ProjectManagementModel.FK_Apply_pro_C_Project" FromRole="C_Project" ToRole="Apply_pro" />
+        </EntityType>
+        <EntityType Name="Cmplt_pro">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cnfrm_pro" Relationship="Self.FK_Cmplt_pro_Cnfrm_pro" FromRole="Cmplt_pro" ToRole="Cnfrm_pro" />
+        </EntityType>
+        <EntityType Name="Cnfrm_pro">
+          <Key>
+            <PropertyRef Name="Proj_Id" />
+          </Key>
+          <Property Name="Proj_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="C_Project" Relationship="Self.FK_Cnfrm_pro_C_Project" FromRole="Cnfrm_pro" ToRole="C_Project" />
+          <NavigationProperty Name="Cmplt_pro" Relationship="Self.FK_Cmplt_pro_Cnfrm_pro" FromRole="Cnfrm_pro" ToRole="Cmplt_pro" />
+          <NavigationProperty Name="MemLogin" Relationship="Self.FK_Cnfrm_pro_MemLogin" FromRole="Cnfrm_pro" ToRole="MemLogin" />
+          <NavigationProperty Name="SupLogin" Relationship="Self.FK_Cnfrm_pro_SupLogin" FromRole="Cnfrm_pro" ToRole="SupLogin" />
+        </EntityType>
+        <EntityType Name="MemLogin">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Credit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cnfrm_pro" Relationship="Self.FK_Cnfrm_pro_MemLogin" FromRole="MemLogin" ToRole="Cnfrm_pro" />
+          <NavigationProperty Name="Apply_pro" Relationship="ProjectManagementModel.FK_Apply_pro_MemLogin" FromRole="MemLogin" ToRole="Apply_pro" />
+        </EntityType>
+        <EntityType Name="SupLogin">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Work_domain" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cnfrm_pro" Relationship="Self.FK_Cnfrm_pro_SupLogin" FromRole="SupLogin" ToRole="Cnfrm_pro" />
+        </EntityType>
+        <Association Name="FK_Cnfrm_pro_C_Project">
+          <End Role="C_Project" Type="Self.C_Project" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="C_Project">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cmplt_pro_Cnfrm_pro">
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="1" />
+          <End Role="Cmplt_pro" Type="Self.Cmplt_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cnfrm_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Cmplt_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cnfrm_pro_MemLogin">
+          <End Role="MemLogin" Type="Self.MemLogin" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemLogin">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="MemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cnfrm_pro_SupLogin">
+          <End Role="SupLogin" Type="Self.SupLogin" Multiplicity="1" />
+          <End Role="Cnfrm_pro" Type="Self.Cnfrm_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupLogin">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cnfrm_pro">
+              <PropertyRef Name="SupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_Project" EntityType="Self.C_Project" />
+          <EntitySet Name="Cmplt_pro" EntityType="Self.Cmplt_pro" />
+          <EntitySet Name="Cnfrm_pro" EntityType="Self.Cnfrm_pro" />
+          <EntitySet Name="MemLogins" EntityType="Self.MemLogin" />
+          <EntitySet Name="SupLogins" EntityType="Self.SupLogin" />
+          <AssociationSet Name="FK_Cnfrm_pro_C_Project" Association="Self.FK_Cnfrm_pro_C_Project">
+            <End Role="C_Project" EntitySet="C_Project" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cmplt_pro_Cnfrm_pro" Association="Self.FK_Cmplt_pro_Cnfrm_pro">
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+            <End Role="Cmplt_pro" EntitySet="Cmplt_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cnfrm_pro_MemLogin" Association="Self.FK_Cnfrm_pro_MemLogin">
+            <End Role="MemLogin" EntitySet="MemLogins" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cnfrm_pro_SupLogin" Association="Self.FK_Cnfrm_pro_SupLogin">
+            <End Role="SupLogin" EntitySet="SupLogins" />
+            <End Role="Cnfrm_pro" EntitySet="Cnfrm_pro" />
+          </AssociationSet>
+          <EntitySet Name="Apply_pro" EntityType="ProjectManagementModel.Apply_pro" />
+          <AssociationSet Name="FK_Apply_pro_C_Project" Association="ProjectManagementModel.FK_Apply_pro_C_Project">
+            <End Role="C_Project" EntitySet="C_Project" />
+            <End Role="Apply_pro" EntitySet="Apply_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apply_pro_MemLogin" Association="ProjectManagementModel.FK_Apply_pro_MemLogin">
+            <End Role="MemLogin" EntitySet="MemLogins" />
+            <End Role="Apply_pro" EntitySet="Apply_pro" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Apply_pro">
+          <Key>
+            <PropertyRef Name="MemId" />
+          </Key>
+          <Property Name="Proj_Id" Type="Int32" Nullable="false" />
+          <Property Name="MemId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="C_Project" Relationship="ProjectManagementModel.FK_Apply_pro_C_Project" FromRole="Apply_pro" ToRole="C_Project" />
+          <NavigationProperty Name="MemLogin" Relationship="ProjectManagementModel.FK_Apply_pro_MemLogin" FromRole="Apply_pro" ToRole="MemLogin" />
+          <Property Name="App_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_Apply_pro_C_Project">
+          <End Type="ProjectManagementModel.C_Project" Role="C_Project" Multiplicity="1" />
+          <End Type="ProjectManagementModel.Apply_pro" Role="Apply_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Project">
+              <PropertyRef Name="Proj_Id" />
+            </Principal>
+            <Dependent Role="Apply_pro">
+              <PropertyRef Name="Proj_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apply_pro_MemLogin">
+          <End Type="ProjectManagementModel.MemLogin" Role="MemLogin" Multiplicity="1" />
+          <End Type="ProjectManagementModel.Apply_pro" Role="Apply_pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MemLogin">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Apply_pro">
+              <PropertyRef Name="MemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectManagementModelStoreContainer" CdmEntityContainer="ProjectManagementEntities">
+          <EntitySetMapping Name="C_Project">
+            <EntityTypeMapping TypeName="ProjectManagementModel.C_Project">
+              <MappingFragment StoreEntitySet="C_Project">
+                <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Duaration" ColumnName="Duaration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cmplt_pro">
+            <EntityTypeMapping TypeName="ProjectManagementModel.Cmplt_pro">
+              <MappingFragment StoreEntitySet="Cmplt_pro">
+                <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cnfrm_pro">
+            <EntityTypeMapping TypeName="ProjectManagementModel.Cnfrm_pro">
+              <MappingFragment StoreEntitySet="Cnfrm_pro">
+                <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupId" ColumnName="SupId" />
+                <ScalarProperty Name="MemId" ColumnName="MemId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemLogins">
+            <EntityTypeMapping TypeName="ProjectManagementModel.MemLogin">
+              <MappingFragment StoreEntitySet="MemLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupLogins">
+            <EntityTypeMapping TypeName="ProjectManagementModel.SupLogin">
+              <MappingFragment StoreEntitySet="SupLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Work_domain" ColumnName="Work_domain" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Apply_pro">
+            <EntityTypeMapping TypeName="ProjectManagementModel.Apply_pro">
+              <MappingFragment StoreEntitySet="Apply_pro">
+                <ScalarProperty Name="App_Id" ColumnName="App_Id" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="MemId" ColumnName="MemId" />
+                <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

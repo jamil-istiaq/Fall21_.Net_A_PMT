@@ -1,0 +1,14 @@
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\AutoMapper.dll
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\DataLayer.dll
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\DataLayer.dll.config
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\AutoMapper.xml
+D:\.Net_Code\ProjectManagement\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\.Net_Code\ProjectManagement\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+D:\.Net_Code\ProjectManagement\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\.Net_Code\ProjectManagement\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+D:\.Net_Code\ProjectManagement\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\.Net_Code\ProjectManagement\BusinessLayer\obj\Debug\BusinessLayer.pdb

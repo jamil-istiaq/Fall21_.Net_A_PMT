@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectManagementModelStoreContainer" CdmEntityContainer="ProjectManagementEntities">
+    <EntitySetMapping Name="C_Project">
+      <EntityTypeMapping TypeName="ProjectManagementModel.C_Project">
+        <MappingFragment StoreEntitySet="C_Project">
+          <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Duaration" ColumnName="Duaration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cmplt_pro">
+      <EntityTypeMapping TypeName="ProjectManagementModel.Cmplt_pro">
+        <MappingFragment StoreEntitySet="Cmplt_pro">
+          <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cnfrm_pro">
+      <EntityTypeMapping TypeName="ProjectManagementModel.Cnfrm_pro">
+        <MappingFragment StoreEntitySet="Cnfrm_pro">
+          <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SupId" ColumnName="SupId" />
+          <ScalarProperty Name="MemId" ColumnName="MemId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemLogins">
+      <EntityTypeMapping TypeName="ProjectManagementModel.MemLogin">
+        <MappingFragment StoreEntitySet="MemLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupLogins">
+      <EntityTypeMapping TypeName="ProjectManagementModel.SupLogin">
+        <MappingFragment StoreEntitySet="SupLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Work_domain" ColumnName="Work_domain" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Apply_pro">
+      <EntityTypeMapping TypeName="ProjectManagementModel.Apply_pro">
+        <MappingFragment StoreEntitySet="Apply_pro">
+          <ScalarProperty Name="App_Id" ColumnName="App_Id" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="MemId" ColumnName="MemId" />
+          <ScalarProperty Name="Proj_Id" ColumnName="Proj_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
